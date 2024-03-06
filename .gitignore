@@ -1,0 +1,17 @@
+# Ignore compiled binaries
+*.exe
+*.dll
+
+# Ignore Visual Studio files
+.vs/
+*.suo
+*.ntvs*
+
+# Ignore logs and temporary files
+*.log
+*.swp
+*~
+
+# Ignore directories
+bin/
+obj/

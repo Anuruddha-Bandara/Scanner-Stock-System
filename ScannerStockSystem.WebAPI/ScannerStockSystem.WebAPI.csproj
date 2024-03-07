@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ScannerStockSystem.Application\ScannerStockSystem.Application.csproj" />
+    <ProjectReference Include="..\ScannerStockSystem.Infrastructure\ScannerStockSystem.Infrastructure.csproj" />
+    <ProjectReference Include="..\ScannerStockSystem.Persistence\ScannerStockSystem.Persistence.csproj" />
+    <ProjectReference Include="..\ScannerStockSystem.Shared\ScannerStockSystem.Shared.csproj" />
   </ItemGroup>
 
 </Project>

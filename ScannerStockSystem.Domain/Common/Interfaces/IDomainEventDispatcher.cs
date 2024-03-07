@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ScannerStockSystem.Domain.Common.Interfaces
 {
-    internal interface IDomainEventDispatcher
+    public interface IDomainEventDispatcher
     {
         Task DispatchAndClearEvents(IEnumerable<BaseEntity> entitiesWithEvents);
     }

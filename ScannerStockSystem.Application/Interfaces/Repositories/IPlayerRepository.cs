@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace ScannerStockSystem.Application.Interfaces.Repositories
 {
-    public interface IPlayerRepository
+    public interface ICountryRepository
     {
-        Task<List<Country>> GetPlayersByClubAsync(int clubId);
+        Task<List<Country>> GetCountriesByIdAsync(int id);
     }
 }

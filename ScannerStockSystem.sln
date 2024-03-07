@@ -9,19 +9,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{F163AA2B-9A4B-4A5F-B9EE-320AC0CB7F5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScannerStockSystem.Application", "ScannerStockSystem.Application\ScannerStockSystem.Application.csproj", "{F13AA39A-1B2C-410C-91EB-F8CB17AB7A7D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScannerStockSystem.Application", "ScannerStockSystem.Application\ScannerStockSystem.Application.csproj", "{F13AA39A-1B2C-410C-91EB-F8CB17AB7A7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScannerStockSystem.Domain", "ScannerStockSystem.Domain\ScannerStockSystem.Domain.csproj", "{18311212-F8BD-4D1C-8D7C-41FDA737AA71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScannerStockSystem.Domain", "ScannerStockSystem.Domain\ScannerStockSystem.Domain.csproj", "{18311212-F8BD-4D1C-8D7C-41FDA737AA71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScannerStockSystem.Infrastructure", "ScannerStockSystem.Infrastructure\ScannerStockSystem.Infrastructure.csproj", "{07D3D9DD-BFE3-4CFA-BAE8-8DBCD243CAE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScannerStockSystem.Infrastructure", "ScannerStockSystem.Infrastructure\ScannerStockSystem.Infrastructure.csproj", "{07D3D9DD-BFE3-4CFA-BAE8-8DBCD243CAE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScannerStockSystem.Persistence", "ScannerStockSystem.Persistence\ScannerStockSystem.Persistence.csproj", "{E9393BC4-4D51-4709-BB11-CFCFBCFBFF3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScannerStockSystem.Persistence", "ScannerStockSystem.Persistence\ScannerStockSystem.Persistence.csproj", "{E9393BC4-4D51-4709-BB11-CFCFBCFBFF3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScannerStockSystem.WebAPI", "ScannerStockSystem.WebAPI\ScannerStockSystem.WebAPI.csproj", "{04AAEA0D-AC26-4C82-96F0-F60461DDA8B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScannerStockSystem.WebAPI", "ScannerStockSystem.WebAPI\ScannerStockSystem.WebAPI.csproj", "{04AAEA0D-AC26-4C82-96F0-F60461DDA8B4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{8546E454-02D0-4B21-BD78-8C4ADA0EE64D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScannerStockSystem.UnitTests", "ScannerStockSystem.UnitTests\ScannerStockSystem.UnitTests.csproj", "{FD7AEC22-261F-44F8-BB71-E633A16FB10D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScannerStockSystem.UnitTests", "ScannerStockSystem.UnitTests\ScannerStockSystem.UnitTests.csproj", "{FD7AEC22-261F-44F8-BB71-E633A16FB10D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{3DFB419F-6E9B-4D2F-BB8A-F391A2FB1FD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScannerStockSystem.Shared", "ScannerStockSystem.Shared\ScannerStockSystem.Shared.csproj", "{7060C35F-3FA5-4998-997F-A0CF82E275B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +57,10 @@ Global
 		{FD7AEC22-261F-44F8-BB71-E633A16FB10D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD7AEC22-261F-44F8-BB71-E633A16FB10D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD7AEC22-261F-44F8-BB71-E633A16FB10D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7060C35F-3FA5-4998-997F-A0CF82E275B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7060C35F-3FA5-4998-997F-A0CF82E275B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7060C35F-3FA5-4998-997F-A0CF82E275B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7060C35F-3FA5-4998-997F-A0CF82E275B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +72,7 @@ Global
 		{E9393BC4-4D51-4709-BB11-CFCFBCFBFF3A} = {8897C6F1-CA49-43DB-AD94-1F07D24B4642}
 		{04AAEA0D-AC26-4C82-96F0-F60461DDA8B4} = {F163AA2B-9A4B-4A5F-B9EE-320AC0CB7F5C}
 		{FD7AEC22-261F-44F8-BB71-E633A16FB10D} = {8546E454-02D0-4B21-BD78-8C4ADA0EE64D}
+		{7060C35F-3FA5-4998-997F-A0CF82E275B4} = {3DFB419F-6E9B-4D2F-BB8A-F391A2FB1FD0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5240DA8E-5847-497E-B1B6-52B936BCB74F}

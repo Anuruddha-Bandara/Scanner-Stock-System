@@ -6,4 +6,20 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Common\Exceptions\" />
+    <Folder Include="DTOs\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Features\Countries\Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ScannerStockSystem.Domain\ScannerStockSystem.Domain.csproj" />
+    <ProjectReference Include="..\ScannerStockSystem.Shared\ScannerStockSystem.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

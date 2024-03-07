@@ -12,7 +12,7 @@ namespace ScannerStockSystem.Domain.Entities
 {
     public class Country : BaseAuditableEntity
     {      
-        public string? CountryName { get; set; }
+        public string? Name { get; set; }
         public string? Description { get; set; }
     }
 }

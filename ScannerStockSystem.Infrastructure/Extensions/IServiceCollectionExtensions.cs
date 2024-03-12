@@ -18,9 +18,9 @@ namespace ScannerStockSystem.Infrastructure.Extensions
         {
             services
                 .AddTransient<IMediator, Mediator>()
-                .AddTransient<IDomainEventDispatcher, IDomainEventDispatcher>()
+                .AddTransient<IDomainEventDispatcher, DomainEventDispatcher>()
                 .AddTransient<IDateTimeService, DateTimeService>()
-                .AddTransient<IEmailService, EmailService>();
+                .AddTransient<IEmailService, EmailService>(); ;
         }
     }
 }

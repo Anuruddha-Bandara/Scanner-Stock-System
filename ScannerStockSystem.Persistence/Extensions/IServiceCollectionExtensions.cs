@@ -23,8 +23,8 @@ namespace ScannerStockSystem.Persistence.Extensions
 
         public static void AddDbContext(this IServiceCollection services, IConfiguration configuration)
         {
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
-
+            //var connectionString = configuration.GetConnectionString("DefaultConnection");
+            var connectionString = configuration["ConnectionString"];
             services.AddDbContext<ApplicationDbContext>(options =>
                options.UseSqlServer(connectionString,
                    builder => builder.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));

@@ -29,6 +29,11 @@ namespace ScannerStockSystem.Persistence.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Country>()
+           .ToTable("Country")
+           .Property(e => e.Name)
+           .HasColumnType("nvarchar(50)")
+           .HasMaxLength(50); 
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }

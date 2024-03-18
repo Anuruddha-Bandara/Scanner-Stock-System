@@ -24,18 +24,73 @@ namespace ScannerStockSystem.Persistence.Contexts
             _dispatcher = dispatcher;
         }
 
-    
-        public DbSet<Country> Countries => Set<Country>();
 
+        public DbSet<Country> Countries => Set<Country>();
+        public DbSet<Customer> Customers => Set<Customer>();
+        public DbSet<ContactPerson> ContactPersons => Set<ContactPerson>();
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Country>()
-           .ToTable("Country")
-           .Property(e => e.Name)
-           .HasColumnType("nvarchar(50)")
-           .HasMaxLength(50); 
+            //Creating Country
+            modelBuilder.Entity<Country>(entity =>
+            {
+                entity.ToTable("Country");
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Name).HasColumnType("nvarchar(50)").HasMaxLength(50);
+                entity.Property(e => e.Description).HasColumnType("nvarchar(50)").HasMaxLength(50);
+            });
+
+            // Creating  Customer
+            modelBuilder.Entity<Customer>(entity =>
+            {
+                entity.ToTable("Customers"); // Set table name
+                entity.HasKey(e => e.Id); // Configure primary key
+
+                // Configure properties
+                entity.Property(e => e.Name).HasMaxLength(100);
+                entity.Property(e => e.Address1).HasMaxLength(100);
+                entity.Property(e => e.Address2).HasMaxLength(100);
+                entity.Property(e => e.Address3).HasMaxLength(100);
+
+                entity.HasOne(c => c.Country).WithOne()
+                .HasForeignKey<Customer>(c => c.CountryId).OnDelete(DeleteBehavior.Cascade);
+
+              
+
+
+            });
+
+            // Configure the ContactPerson entity
+            modelBuilder.Entity<ContactPerson>(entity =>
+            {
+                entity.ToTable("ContactPersons"); // Set table name
+                entity.HasKey(cp => cp.Id); // Configure primary key
+                entity.HasOne(cp => cp.Customer).WithOne().HasForeignKey<Customer>(c => c.Id).OnDelete(DeleteBehavior.Cascade);
+                // Configure properties
+                entity.Property(cp => cp.Name).HasMaxLength(100);
+                entity.Property(cp => cp.Email).HasMaxLength(100); // Adjust the max length as per your requirements
+
+            });
+
+            // Seed sample data
+            modelBuilder.Entity<Country>().HasData(
+                new Country { Id = 1, Name = "Country 1", Description = "Description of Country 1" },
+                new Country { Id = 2, Name = "Country 2", Description = "Description of Country 2" }
+            );
+
+
+
+            //modelBuilder.Entity<ContactPerson>().HasData(
+            //    new ContactPerson { Id = 1, Name = "Contact 1", Mobile = "1234567890", CustomerId = 1,Email = "TestOne@Gmail.com",Land = "West Us" },
+            //    new ContactPerson { Id = 2, Name = "Contact 2", Mobile = "0987654321", CustomerId = 2,Email = "TestOne@Gmail.com" ,Land = "Eastern Us"}
+
+            //);
+
+
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+
+
         }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())

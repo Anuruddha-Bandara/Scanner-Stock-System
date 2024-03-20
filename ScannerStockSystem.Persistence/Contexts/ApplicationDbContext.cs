@@ -28,6 +28,8 @@ namespace ScannerStockSystem.Persistence.Contexts
         public DbSet<Country> Countries => Set<Country>();
         public DbSet<Customer> Customers => Set<Customer>();
         public DbSet<ContactPerson> ContactPersons => Set<ContactPerson>();
+        public DbSet<ScannerType> ScannerTypes => Set<ScannerType>();
+        public DbSet<Scanner> Scanners => Set<Scanner>();
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Creating Country
@@ -71,6 +73,24 @@ namespace ScannerStockSystem.Persistence.Contexts
 
             });
 
+            // Configure the Scanner entity
+            modelBuilder.Entity<Scanner>(entity =>
+            {
+                entity.ToTable("Scanners");
+                entity.HasKey(CP => CP.Id);
+                entity.Property(cp => cp.PartNo).HasMaxLength(100);
+                entity.Property(cp => cp.Make).HasMaxLength(100);
+                entity.Property(cp => cp.Speed).HasMaxLength(100);
+                entity.Property(cp => cp.MaxPageSize).HasMaxLength(100);
+            });
+            // Configure  ScannerType entity
+            modelBuilder.Entity<ScannerType>(entity =>
+            {
+                entity.ToTable("ScannerTypes");
+                entity.HasKey(CP => CP.Id);
+                entity.Property(cp => cp.Type).HasMaxLength(100);
+                entity.Property(cp => cp.Description).HasMaxLength(100);
+            });
             // Seed sample data
             modelBuilder.Entity<Country>().HasData(
                 new Country { Id = 1, Name = "Country 1", Description = "Description of Country 1" },

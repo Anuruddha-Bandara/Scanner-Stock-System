@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ScannerStockSystem.Persistence.Contexts;
 
@@ -11,9 +12,11 @@ using ScannerStockSystem.Persistence.Contexts;
 namespace ScannerStockSystem.Persistence.Data.Scripts
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240321071521_AddNewEntityMasterData")]
+    partial class AddNewEntityMasterData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,6 +38,9 @@ namespace ScannerStockSystem.Persistence.Data.Scripts
 
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -154,7 +160,8 @@ namespace ScannerStockSystem.Persistence.Data.Scripts
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CountryId");
+                    b.HasIndex("CountryId")
+                        .IsUnique();
 
                     b.ToTable("Customers", (string)null);
                 });
@@ -324,8 +331,8 @@ namespace ScannerStockSystem.Persistence.Data.Scripts
             modelBuilder.Entity("ScannerStockSystem.Domain.Entities.Customer", b =>
                 {
                     b.HasOne("ScannerStockSystem.Domain.Entities.Country", "Country")
-                        .WithMany()
-                        .HasForeignKey("CountryId")
+                        .WithOne()
+                        .HasForeignKey("ScannerStockSystem.Domain.Entities.Customer", "CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

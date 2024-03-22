@@ -23,7 +23,7 @@ namespace ScannerStockSystem.Application.Features.Customers.Commands.CreateCusto
         public DateTime? BirthDate { get; set; }
     }
 
-    internal class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, Result<int>>
+    public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, Result<int>>
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -37,17 +37,14 @@ namespace ScannerStockSystem.Application.Features.Customers.Commands.CreateCusto
         public async Task<Result<int>> Handle(CreateCustomerCommand command, CancellationToken cancellationToken)
         { 
             Customer customer = new Customer(); 
-            customer.Id = 1;
             customer.Name = "John Doe";
             customer.Address1 = "123 Main St";
             customer.Address2 = "Apt 101";
             customer.Address3 = "Some City";
-            customer.CountryId = 1;
 
             var contactPerson = new ContactPerson
             {
                 Name = "New Contact Person Name",
-                CustomerId = customer.Id,
                 Mobile = "0112545895",
                 Land = "Passara",
                 Email = "TestUser@Gmail.com",

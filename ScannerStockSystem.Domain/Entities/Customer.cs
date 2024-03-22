@@ -13,7 +13,6 @@ namespace ScannerStockSystem.Domain.Entities
         public string Address1 { get; set; }
         public string Address2 { get; set; }       
         public string Address3 { get; set; }
-        public int CountryId { get; set; }
         public Country Country { get; set; }
         //public IList<ContactPerson> ContactPersons { get; set; }
     }

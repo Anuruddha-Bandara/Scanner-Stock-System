@@ -30,6 +30,7 @@ namespace ScannerStockSystem.Persistence.Contexts
         public DbSet<ContactPerson> ContactPersons => Set<ContactPerson>();
         public DbSet<ScannerType> ScannerTypes => Set<ScannerType>();
         public DbSet<Scanner> Scanners => Set<Scanner>();
+        public DbSet<MasterData> MasterDatas => Set<MasterData>();
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Creating Country
@@ -51,13 +52,7 @@ namespace ScannerStockSystem.Persistence.Contexts
                 entity.Property(e => e.Name).HasMaxLength(100);
                 entity.Property(e => e.Address1).HasMaxLength(100);
                 entity.Property(e => e.Address2).HasMaxLength(100);
-                entity.Property(e => e.Address3).HasMaxLength(100);
-
-                entity.HasOne(c => c.Country).WithOne()
-                .HasForeignKey<Customer>(c => c.CountryId).OnDelete(DeleteBehavior.Cascade);
-
-              
-
+                entity.Property(e => e.Address3).HasMaxLength(100);            
 
             });
 
@@ -91,25 +86,29 @@ namespace ScannerStockSystem.Persistence.Contexts
                 entity.Property(cp => cp.Type).HasMaxLength(100);
                 entity.Property(cp => cp.Description).HasMaxLength(100);
             });
+
+            // Configure  MasterDatas entity
+            modelBuilder.Entity<MasterData>(entity =>
+            {
+                entity.ToTable("MasterDatas");
+                entity.HasKey(CP => CP.Id);
+                //entity.HasOne(e => e.Scanner).WithOne().HasForeignKey<Scanner>(ec=>ec.Id);
+                //entity.HasOne(e => e.Customer).WithOne().HasForeignKey<Customer>(ec => ec.Id);
+                entity.Property(cp => cp.ManufactureSalesOrderNo).HasMaxLength(100);
+                entity.Property(cp => cp.EndCustomerPoNo).HasMaxLength(100);
+                entity.Property(cp => cp.SanjePoNo).HasMaxLength(100);
+                entity.Property(cp => cp.DeliveryNoteNo).HasMaxLength(100);
+                entity.Property(cp => cp.DispatchDate).HasDefaultValueSql("GETDATE()"); 
+                entity.Property(cp => cp.Dispatched).HasDefaultValue(false);
+            });
             // Seed sample data
             modelBuilder.Entity<Country>().HasData(
                 new Country { Id = 1, Name = "Country 1", Description = "Description of Country 1" },
                 new Country { Id = 2, Name = "Country 2", Description = "Description of Country 2" }
             );
 
-
-
-            //modelBuilder.Entity<ContactPerson>().HasData(
-            //    new ContactPerson { Id = 1, Name = "Contact 1", Mobile = "1234567890", CustomerId = 1,Email = "TestOne@Gmail.com",Land = "West Us" },
-            //    new ContactPerson { Id = 2, Name = "Contact 2", Mobile = "0987654321", CustomerId = 2,Email = "TestOne@Gmail.com" ,Land = "Eastern Us"}
-
-            //);
-
-
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-
-
 
         }
 

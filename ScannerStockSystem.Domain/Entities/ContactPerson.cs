@@ -15,7 +15,6 @@ namespace ScannerStockSystem.Domain.Entities
         public string Mobile { get; set; }
         public string Land { get; set; }
         public string Email { get; set; }
-        public int CustomerId { get; set; }
         public Customer Customer { get; set; } 
 
     }

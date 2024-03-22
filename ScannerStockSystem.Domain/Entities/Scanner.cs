@@ -14,6 +14,7 @@ namespace ScannerStockSystem.Domain.Entities
         public string PartNo { get; set; }
         public string MaxPageSize { get; set; }
         public string Speed { get; set; }
+        public string? SerialNo { get; set; }
         public ScannerType Type { get; set; }
     }
 }

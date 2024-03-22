@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\Customers\NewFolder\**" />
+    <EmbeddedResource Remove="Features\Customers\NewFolder\**" />
+    <None Remove="Features\Customers\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Common\Exceptions\" />
+    <Folder Include="Features\MasterDatas\Queries\" />
+    <Folder Include="Features\Scanners\Queries\" />
     <Folder Include="Features\ScannerTypes\" />
   </ItemGroup>
 

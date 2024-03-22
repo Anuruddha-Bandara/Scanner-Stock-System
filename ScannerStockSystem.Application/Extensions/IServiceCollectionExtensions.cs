@@ -2,6 +2,7 @@
 using MediatR;
 using System.Reflection;
 using FluentValidation;
+using ScannerStockSystem.Application.Common.Behaviors;
 
 namespace ScannerStockSystem.Application.Extensions
 {
@@ -27,6 +28,7 @@ namespace ScannerStockSystem.Application.Extensions
         private static void AddValidators(this IServiceCollection services)
         {
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
         }
     }
 }

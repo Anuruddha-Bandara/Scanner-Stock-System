@@ -3,6 +3,7 @@ using Microsoft.OpenApi.Models;
 using ScannerStockSystem.Application.Extensions;
 using ScannerStockSystem.Infrastructure.Extensions;
 using ScannerStockSystem.Persistence.Extensions;
+using ScannerStockSystem.WebAPI.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +34,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
 }
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.MapControllers();
 

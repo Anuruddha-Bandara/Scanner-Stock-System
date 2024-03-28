@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ScannerStockSystem.Application\ScannerStockSystem.Application.csproj" />
+    <ProjectReference Include="..\ScannerStockSystem.BackgroundTasks\ScannerStockSystem.BackgroundTasks.csproj" />
     <ProjectReference Include="..\ScannerStockSystem.Infrastructure\ScannerStockSystem.Infrastructure.csproj" />
     <ProjectReference Include="..\ScannerStockSystem.Persistence\ScannerStockSystem.Persistence.csproj" />
     <ProjectReference Include="..\ScannerStockSystem.Shared\ScannerStockSystem.Shared.csproj" />

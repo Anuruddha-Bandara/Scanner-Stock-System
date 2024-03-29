@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using ScannerStockSystem.Application.Common.Exceptions;
 using System.Text.Json;
 
@@ -26,7 +27,7 @@ namespace ScannerStockSystem.WebAPI.Middlewares
             }
             catch (BadRequestException ex)
             {
-
+              
                 var errorResponse = new
                 {
                     statusCode = StatusCodes.Status400BadRequest,
@@ -36,7 +37,7 @@ namespace ScannerStockSystem.WebAPI.Middlewares
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception, "Exception occurred: {Message}", exception.Message);
+                _logger.LogError(exception, $"Exception occurred:- {exception.Message}");
 
                 var problemDetails = new ProblemDetails
                 {

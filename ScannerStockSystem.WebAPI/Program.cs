@@ -5,6 +5,7 @@ using ScannerStockSystem.Infrastructure.Extensions;
 using ScannerStockSystem.Persistence.Extensions; 
 using ScannerStockSystem.WebAPI.Middlewares;
 using ScannerStockSystem.BackgroundTasks.Extensions;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,12 @@ builder.Services.AddApplicationLayer();
 builder.Services.AddInfrastructureLayer(); 
 builder.Services.AddBackgroundTasksLayer();
 builder.Services.AddPersistenceLayer(builder.Configuration);
+
+//Setup Serilog configuration
+builder.Host.UseSerilog((context, configuration) => 
+configuration.ReadFrom.Configuration(context.Configuration));
+//end Setup
+
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -36,6 +43,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
 }
+app.UseSerilogRequestLogging();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.MapControllers();

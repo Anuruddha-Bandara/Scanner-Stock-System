@@ -11,9 +11,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddApplicationLayer();
-builder.Services.AddInfrastructureLayer(); 
 builder.Services.AddBackgroundTasksLayer();
+builder.Services.AddInfrastructureLayer(builder.Configuration);
 builder.Services.AddPersistenceLayer(builder.Configuration);
+
+
 
 //Setup Serilog configuration
 builder.Host.UseSerilog((context, configuration) => 

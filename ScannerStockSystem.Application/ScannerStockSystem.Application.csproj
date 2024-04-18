@@ -16,6 +16,7 @@
     <Folder Include="Features\MasterDatas\Queries\" />
     <Folder Include="Features\Scanners\Queries\" />
     <Folder Include="Features\ScannerTypes\" />
+    <Folder Include="Identity\User\AssignRoles\" />
   </ItemGroup>
 
   <ItemGroup>
